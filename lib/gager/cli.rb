@@ -1,4 +1,5 @@
 require "gager/cli/version"
+require "gager/cli/application"
 
 module Gager
   module Cli
