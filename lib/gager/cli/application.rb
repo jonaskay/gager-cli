@@ -8,15 +8,21 @@ module Gager
         @authorizer = Gager::Core::Authorizer.new(user_id, client_id, client_secret, token_store_file: token_store_file)
       end
 
-      def report(templates)
+      def report(request)
         authorize if @authorizer.authorization.nil?
 
         client = Gager::Core::Client.new(@authorizer.authorization)
-        report_requests = templates.map { |t| t.fetch(:request) }
-        response = client.get_reports(report_requests)
+        report_request = request.slice(
+          :view_id,
+          :date_ranges,
+          :metrics,
+          :dimensions,
+          :filters_expression
+        )
+        response = client.get_reports(report_request)
 
-        response.reports.each_with_index do |result, i|
-          name = templates[i][:name]
+        response.reports.each do |result|
+          name = request[:name]
           puts generate_table(result, title: name)
         end
       end

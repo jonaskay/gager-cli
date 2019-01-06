@@ -12,7 +12,7 @@ RSpec.describe Gager::Cli::Application do
                 "dimensions" => [{"name" => "ga:browser"}],
                 "filtersExpression" => nil,
                 "metrics" => [{ "expression" => "ga:sessions" }],
-                "viewId" => "123"
+                "viewId" => "MyViewId"
               }
             ]
           }.to_json
@@ -58,18 +58,18 @@ RSpec.describe Gager::Cli::Application do
 
     let(:authorizer) { application.instance_variable_get(:@authorizer) }
     let(:authorization) { "MyAuthorization" }
-    let(:name) { "MyReport" }
     let(:request) {
       {
-        "view_id" => "123",
-        "date_ranges" => [["2015-06-15", "2015-06-30"]],
-        "dimensions" => ["ga:browser"],
-        "metrics" => ["ga:sessions"],
-        "filters_expression" => nil
+        name: "MyReport",
+        view_id: "MyViewId",
+        date_ranges: [["2015-06-15", "2015-06-30"]],
+        metrics: ["ga:sessions"],
+        dimensions: ["ga:browser"],
+        filters_expression: nil
       }
     }
 
-    subject { application.report([{name: name, request: request}]) }
+    subject { application.report(request) }
 
     it "outputs the report" do
       expect { subject }.to output(a_string_ending_with(<<~TEXT
