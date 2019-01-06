@@ -1,28 +1,19 @@
 # Gager::Cli
+[![Build Status](https://travis-ci.com/jonaskay/gager-cli.svg?branch=master)](https://travis-ci.com/jonaskay/gager-cli)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/gager/cli`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+`Gager::Cli` provides an engine for CLI applications to retrieve and print Google Analytics reports using the [Google Analytics Reporting API v4](https://developers.google.com/analytics/devguides/reporting/core/v4/).
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'gager-cli'
+gem 'gager-cli', github: 'jonaskay/gager-cli'
 ```
 
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install gager-cli
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Development
 
