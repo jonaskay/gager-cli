@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/jonaskay/gager-core
-  revision: 9db82ac43d7e375a39681635008834b4815e2aad
+  revision: 978f611590b2ebd74616d099171deb27c339ed07
   specs:
     gager-core (0.1.0)
       google-api-client (~> 0.11)
